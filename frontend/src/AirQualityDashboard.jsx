@@ -37,7 +37,7 @@ function AirQualityDashboard() {
 
   // Fetch and process the air quality data from the API.
   useEffect(() => {
-    fetch("http://localhost:5000/api/airquality") // Update with your API endpoint if needed.
+    fetch("https://air-quality-datastream.onrender.com/api/airquality") // Update with your API endpoint if needed.
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
