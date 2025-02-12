@@ -13,4 +13,4 @@ def air_quality():
     return jsonify({"error": "Unable to fetch data"}), 500
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0")
