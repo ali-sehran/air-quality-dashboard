@@ -11,14 +11,11 @@ import {
 } from "recharts";
 
 function AirQualityDashboard() {
-  // State for aggregated chart data, parameters, unit mapping, and pointer position.
   const [chartData, setChartData] = useState([]);
   const [parameters, setParameters] = useState([]);
   const [unitsMapping, setUnitsMapping] = useState({});
   const [pointer, setPointer] = useState({ x: -100, y: -100 });
 
-  // Helper function: Convert digits in a parameter name to Unicode subscripts.
-  // E.g., "NO2" becomes "NO₂".
   const formatParameter = (param) => {
     const subscriptDigits = {
       "0": "₀",
@@ -35,13 +32,11 @@ function AirQualityDashboard() {
     return param.replace(/\d/g, (digit) => subscriptDigits[digit] || digit);
   };
 
-  // Fetch and process the air quality data from the API.
   useEffect(() => {
-    fetch("https://air-quality-datastream.onrender.com/api/airquality") // Update with your API endpoint if needed.
+    fetch("https://air-quality-datastream.onrender.com/api/airquality") 
       .then((response) => response.json())
       .then((data) => {
         if (Array.isArray(data) && data.length > 0) {
-          // Build a mapping for units (using the unformatted parameter as the key).
           const mapping = {};
           data.forEach((item) => {
             if (!mapping[item.parameter]) {
@@ -50,11 +45,9 @@ function AirQualityDashboard() {
           });
           setUnitsMapping(mapping);
 
-          // Extract distinct parameters (unformatted) from the data.
           const distinctParameters = Array.from(new Set(data.map(item => item.parameter)));
           setParameters(distinctParameters);
 
-          // Aggregate data by date (formatted as YYYY-MM-DD).
           const aggregated = {};
           data.forEach(({ date, parameter, value }) => {
             const dateKey = date.split("T")[0];
@@ -74,7 +67,6 @@ function AirQualityDashboard() {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  // Custom tooltip: displays the date and for each parameter its value and unit.
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
@@ -99,7 +91,6 @@ function AirQualityDashboard() {
     return null;
   };
 
-  // Update pointer state when the mouse moves.
   const handleMouseMove = (e) => {
     setPointer({ x: e.clientX, y: e.clientY });
   };
@@ -120,7 +111,6 @@ function AirQualityDashboard() {
     );
   }
 
-  // Define bright colors for each parameter line.
   const COLORS = ["#FF5733", "#33FFCE", "#FF33F6", "#33A1FF", "#FFBD33", "#75FF33"];
 
   return (
@@ -137,22 +127,22 @@ function AirQualityDashboard() {
         overflow: "hidden"
       }}
     >
-      {/* Background effect: A large, blurred, radial gradient circle follows the mouse pointer */}
+      {}
       <div
         style={{
           position: "fixed",
           top: pointer.y,
           left: pointer.x,
           transform: "translate(-50%, -50%)",
-          width: "2000px",         // 10 times the original 200px
-          height: "2000px",        // 10 times the original 200px
+          width: "2000px",         
+          height: "2000px",        
           background: "radial-gradient(circle, rgba(211,211,211,0.2) 0%, rgba(105,105,105,0) 100%)",
           borderRadius: "50%",
           pointerEvents: "none",
           transition: "top 0.2s ease-out, left 0.2s ease-out, opacity 0.5s",
           opacity: 0.8,
           zIndex: 1,
-          filter: "blur(60px)"     // Blurs the edges to merge seamlessly with the background.
+          filter: "blur(60px)"     
         }}
       ></div>
 
@@ -173,19 +163,19 @@ function AirQualityDashboard() {
               type="monotone"
               dataKey={parameter}
               stroke={COLORS[index % COLORS.length]}
-              strokeWidth={4} // Thicker stroke for a more visible wave effect.
+              strokeWidth={4} 
               name={formatParameter(parameter)}
               dot={false}
               isAnimationActive={true}
-              animationBegin={1500}    // Delay animation by 1.5 seconds.
-              animationDuration={2500} // Wave-like animation over 2.5 seconds.
+              animationBegin={1500}    
+              animationDuration={2500} 
               animationEasing="ease-in-out"
             />
           ))}
         </LineChart>
       </ResponsiveContainer>
 
-      {/* Signature at bottom right */}
+      {}
       <div
         style={{
           position: "fixed",
