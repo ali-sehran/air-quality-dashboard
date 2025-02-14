@@ -1,53 +1,33 @@
 # 🚀 Real‑Time Air Quality Dashboard 🌍
 
-Welcome to the **Real‑Time Air Quality Dashboard** project! This friendly app shows live air quality data from a public API, presented in a beautiful, interactive dashboard. It's perfect for anyone curious about the environment and for those who want to see DevOps best practices in action—all for free! 🎉
+Welcome to the **Real‑Time Air Quality Dashboard** project! This project is built to fetch and display live air quality data in a beautiful, interactive dashboard. Whether you're an environmental enthusiast or just curious about how DevOps best practices come together in a real-world project, this is for you—all running for free on Render! 🎉
+🔗 **Live Demo:** [https://air-quality-dashboard.onrender.com/](https://air-quality-dashboard.onrender.com/)  
 
 ---
 
-## ✨ Features
+## ✨ Features  
 
 - **Live Data Ingestion:**  
-  Fetch real‑time air quality data (like AQI and pollutant levels) using a free API (e.g., [OpenAQ](https://docs.openaq.org/)).  
-- **Backend API:**  
-  A lightweight Python/Flask application that processes and serves the data through a REST endpoint (`/api/airquality`).  
-- **Interactive Frontend:**  
-  A modern React dashboard that displays the data with cool charts and maps.  
-- **Containerization:**  
-  Dockerize the backend for reproducible, hassle‑free deployments.  
-- **CI/CD Pipeline:**  
-  Automated testing and builds using GitHub Actions (all on the free tier!).  
-- **Free Hosting:**  
-  Deploy the frontend on GitHub Pages or Netlify and the backend on a free service like PythonAnywhere or Render. 😊
+  The dashboard pulls real-time air quality data (AQI, pollutants, etc.) from public APIs like [OpenAQ](https://docs.openaq.org/).  
+- **Flask Backend (API):**  
+  A lightweight **Python/Flask** API that processes and serves air quality data at `/api/airquality`.  
+- **Interactive React Frontend:**  
+  A modern **React-based** dashboard displaying data with charts and visual elements.  
+- **Free Hosting on Render:**  
+  - **Backend:** Hosted as a Flask API on **Render**.  
+  - **Frontend:** Hosted as a static site on **Render**.  
 
 ---
 
-## 🛠️ Architecture Overview
+## 🛠️ Architecture Overview  
 
 1. **Data Ingestion & Processing:**  
-   A Python script fetches and parses air quality data from OpenAQ.
+   - A Python script fetches air quality data from OpenAQ and prepares it for display.  
 2. **Backend API:**  
-   A Flask app provides a RESTful API endpoint to serve the data.
+   - A **Flask-based REST API** provides real-time data at `/api/airquality`.  
 3. **Frontend UI:**  
-   A React app fetches data from the API and visualizes it interactively.
-4. **DevOps Automation:**  
-   Use Git, Docker, and GitHub Actions to automate testing, building, and deployment.
+   - A **React app** fetches data from the backend and visualizes it interactively.  
+4. **Deployment:**  
+   - Both the **Flask API** and **React app** are deployed on **Render's free tier**.  
 
 ---
-
-## 🏃‍♂️ Getting Started
-
-### Prerequisites
-
-- **Python 3.8+**
-- **Node.js & npm**
-- **Docker** (optional, for containerization)
-- **Git**
-
-### Installation
-
-#### Clone the Repository
-
-```bash
-git clone https://github.com/ali-sehran/air-quality-dashboard.git
-cd air-quality-dashboard
-```
